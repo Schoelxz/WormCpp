@@ -1,27 +1,29 @@
 #include <SFML/Graphics.hpp>
 #include "TwoDSpace.h"
 
+TwoDSpace twoDSpace;
+
 using namespace sf;
 using namespace std;
 
-void draw(int asdf[][])
+void draw(int asdf[][twoDSpace.PLAYSIZE])
 {
-	for (int i = 0; i < 30; i++)
+	for (int i = 0; i < twoDSpace.PLAYSIZE; i++)
 	{
 		std::cout << std::endl;
-		for (int j = 0; j < 30; j++)
+		for (int j = 0; j < twoDSpace.PLAYSIZE; j++)
 		{
 			std::cout << asdf[i][j];
 
 		}
 	}
 }
-void updatePlayfield(int playField[][], int posX, int posY)
+void updatePlayfield(int playField[][twoDSpace.PLAYSIZE], int posX, int posY)
 {
-	for (int i = 0; i < playSize; i++)
+	for (int i = 0; i < twoDSpace.PLAYSIZE; i++)
 	{
 		std::cout << std::endl;
-		for (int j = 0; j < playSize; j++)
+		for (int j = 0; j < twoDSpace.PLAYSIZE; j++)
 		{
 			if (!(posX == i && posY == j))
 				playField[i][j] = 0;
@@ -60,13 +62,6 @@ int main()
 
 	int posX = 0;
 	int posY = 0;
-
-
-
-	
-	
-	
-
 
 	while (window.isOpen())
 	{
@@ -127,7 +122,7 @@ int main()
 			std::cout << std::endl;
 			std::cout << std::endl;
 			std::cout << std::endl;
-			updatePlayfield(playField, posY, posX);
+			updatePlayfield(twoDSpace.playField, posY, posX);
 			cout << "SPACE" << endl;
 			flag5 = true;
 		}
