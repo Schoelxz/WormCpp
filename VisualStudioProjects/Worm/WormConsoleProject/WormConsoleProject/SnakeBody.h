@@ -9,6 +9,9 @@ class SnakeBody
 {
 public:
 
+	int posX = 0;
+	int posY = 0;
+
 	RectangleShape rect;
 
 

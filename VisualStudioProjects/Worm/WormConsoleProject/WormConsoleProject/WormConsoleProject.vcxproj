@@ -159,11 +159,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Pellets.cpp" />
     <ClCompile Include="SnakeBody.cpp" />
     <ClCompile Include="SnakeMovement.cpp" />
     <ClCompile Include="TwoDSpace.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Pellets.h" />
     <ClInclude Include="SnakeBody.h" />
     <ClInclude Include="SnakeMovement.h" />
     <ClInclude Include="TwoDSpace.h" />
