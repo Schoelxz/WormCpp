@@ -38,7 +38,7 @@ void TwoDSpace::printField(int playFieldArray[][PLAYSIZE])
 	}
 }
 
-void TwoDSpace::updatePlayfield(int playField[][PLAYSIZE], int posX, int posY)
+void TwoDSpace::updatePlayfield(int playField[][PLAYSIZE], int posX, int posY, vector<SnakeBody*> snakeBody)
 {
 	for (int i = 0; i < PLAYSIZE; i++)
 	{
