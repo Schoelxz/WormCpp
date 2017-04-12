@@ -20,7 +20,6 @@ public:
 	
 	void moveSnake(int& posX, int& posY);
 	
-
 	SnakeMovement();
 	~SnakeMovement();
 

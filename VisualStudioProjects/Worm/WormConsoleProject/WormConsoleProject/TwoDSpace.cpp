@@ -2,8 +2,8 @@
 
 TwoDSpace::TwoDSpace()
 {
-	initField();
-	printField(playField);
+	//initField();
+	//printField(playField);
 }
 
 TwoDSpace::~TwoDSpace()

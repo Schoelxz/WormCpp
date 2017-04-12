@@ -8,8 +8,17 @@ using namespace std;
 class Game
 {
 public:
+
 	void Run()
 	{
+		Font font;
+		font.loadFromFile("arial.ttf");
+		Text asdf("Hello World", font);
+		asdf.setCharacterSize(30);
+
+		asdf.setFillColor(Color::Red);
+		asdf.setPosition(250, 250);
+
 		while (true)
 		{
 			
@@ -17,6 +26,8 @@ public:
 			SnakeMovement snakeMovement;
 			Pellets* pellet = new Pellets();
 			vector<SnakeBody*> snakeBody;
+
+			
 
 			bool lostGame = false;
 
@@ -58,7 +69,9 @@ public:
 						while(snakeBody[i]->rect.getGlobalBounds().intersects(pellet->pellet.getGlobalBounds()))
 						{
 							delete pellet;
+
 							pellet = new Pellets();
+							pellet->objectCreated();
 						}
 
 
@@ -66,8 +79,13 @@ public:
 					if (snakeBody[0]->rect.getGlobalBounds().intersects(pellet->pellet.getGlobalBounds()))
 					{
 						delete pellet;
+
 						pellet = new Pellets();
+						pellet->objectCreated();
+
 						snakeBody.push_back(new SnakeBody());
+						snakeBody[snakeBody.size()-1]->objectCreated();
+						
 					}
 
 					//SnakeMovement Visual:
@@ -80,16 +98,17 @@ public:
 					}
 					snakeBody[0]->rect.setPosition((snakeBody[0]->posX * 50), (snakeBody[0]->posY * 50)); //Snake Head
 
-																																		//For every snakebody; If snakeHead collides with snakeBody; Turn snakeHead Blue;.
+					
 
 					//---
 
 
-					twoDSpace.updatePlayfield(twoDSpace.playField, snakeBody[0]->posX, snakeBody[0]->posY, snakeBody);
+					//twoDSpace.updatePlayfield(twoDSpace.playField, snakeBody[0]->posX, snakeBody[0]->posY, snakeBody);
 					currentTime -= updateInterval;
 				}
 				//---UpdateInterval End---
 
+				//For every snakebody; If snakeHead collides with snakeBody; Turn snakeHead Blue and lose;.
 				for (int i = snakeBody.size() - 1; i >= 1; i--) //all snakeparts except for the head
 					if (snakeBody[0]->rect.getGlobalBounds().intersects(snakeBody[i]->rect.getGlobalBounds()))
 					{
@@ -106,6 +125,7 @@ public:
 					}
 				}
 				window.draw(pellet->pellet);
+				window.draw(asdf);
 				window.display();
 
 				if (lostGame == true)
@@ -125,17 +145,23 @@ public:
 		}
 	}
 
+
+	
+	
+
 };
 
-
-
-
+#if _DEBUG
 int main()
+#else
+#include <Windows.h>
+int __stdcall WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
+#endif
 {
 	Game game;
 
 	game.Run();
-	
+
 
 	return 0;
 }
