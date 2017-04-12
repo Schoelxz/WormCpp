@@ -75,7 +75,7 @@ void SnakeMovement::moveSnake(int& posX, int& posY)
 
 SnakeMovement::SnakeMovement()
 {
-	for (int i = 0; i < 256; i++)
+	for (int i = 0; i < KEYBOARDSTATES; i++)
 		keyboardState[i] = false;
 
 	snakeDir = START;

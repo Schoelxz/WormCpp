@@ -1,5 +1,15 @@
 #include "TwoDSpace.h"
 
+TwoDSpace::TwoDSpace()
+{
+	//initField();
+	//printField(playField);
+}
+
+TwoDSpace::~TwoDSpace()
+{
+}
+
 void TwoDSpace::initField()
 {
 	//The PlayFields initial values created:
@@ -28,30 +38,23 @@ void TwoDSpace::printField(int playFieldArray[][PLAYSIZE])
 	}
 }
 
-void TwoDSpace::updatePlayfield(int playField[][PLAYSIZE], int posX, int posY)
+void TwoDSpace::updatePlayfield(int playField[][PLAYSIZE], int posX, int posY, vector<SnakeBody*> snakeBody)
 {
 	for (int i = 0; i < PLAYSIZE; i++)
 	{
 		std::cout << std::endl;
 		for (int j = 0; j < PLAYSIZE; j++)
-		{
-			if (!(posX == i && posY == j))
+		{	
+			
+			if (!(snakeBody[0]->posX == i && snakeBody[0]->posY == j))
 				playField[j][i] = 0; 
-			else						//i and j reversed to make movement make sense!!! (bad?)
+			else				//i and j reversed to make movement make sense!!! (bad?)
 				playField[j][i] = 1;
+	
 		}
 	}
 	printField(playField);
 
 }
 
-TwoDSpace::TwoDSpace()
-{
-	initField();
-	printField(playField);
-}
 
-
-TwoDSpace::~TwoDSpace()
-{
-}
